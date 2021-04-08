@@ -1,5 +1,5 @@
 import { useElements, useStripe, CardElement } from "@stripe/react-stripe-js";
-import axios from "axios";
+import axios from "../../axios";
 import React, { useEffect, useState } from "react";
 import CurrencyFormat from "react-currency-format";
 import { Link, useHistory } from "react-router-dom";
