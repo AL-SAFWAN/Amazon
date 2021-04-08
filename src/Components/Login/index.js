@@ -1,8 +1,18 @@
-import React from "react";
+import React, { useRef } from "react";
 import "./Login.css";
 import { Link } from "react-router-dom";
 
 function Login() {
+  const emailRef = useRef("");
+  const passwordRef = useRef("");
+  const signIn = (e) => {
+    e.preventDefault();
+
+    console.log(emailRef.current.value, passwordRef.current.value);
+  };
+  const register = (e) => {
+    e.preventDefault();
+  };
   return (
     <div className="login">
       <Link to="/">
@@ -15,10 +25,12 @@ function Login() {
         <h1></h1>
         <form action="">
           <h5>E-mail</h5>
-          <input type="text" />
+          <input ref={emailRef} type="text" />
           <h5>Password</h5>
-          <input type="text" />
-          <button className="login__singInButton">Sing In</button>
+          <input ref={passwordRef} type="password" />
+          <button onClick={signIn} className="login__singInButton">
+            Sing In
+          </button>
         </form>
         <p>
           By singing-in you agree to the AMAZON CLONE Conditions of Use & Sale.
