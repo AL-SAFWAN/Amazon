@@ -1,5 +1,6 @@
 export const initialState = {
   basket: [],
+  user: null,
 };
 
 const reducer = (state, { type, payload }) => {
@@ -20,6 +21,8 @@ const reducer = (state, { type, payload }) => {
         ...state,
         basket: newBasket,
       };
+    case "SET_USER":
+      return { ...state, user: payload };
     default:
       return state;
   }

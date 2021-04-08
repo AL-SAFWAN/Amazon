@@ -5,7 +5,7 @@ import Subtotal from "../Subtotal";
 import "./Checkout.css";
 
 function Checkout() {
-  const [{ basket }] = useStateValue();
+  const [{ basket,user }] = useStateValue();
   return (
     <div className="checkout">
       <div className="checkout__left">
@@ -15,6 +15,7 @@ function Checkout() {
           alt=""
         />
         <div>
+          <h3>Hello, {user?.email}</h3>
           <h2 className="checkout__title">Your shopping basket</h2>
         </div>
         {basket.map((item) => (
