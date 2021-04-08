@@ -17,19 +17,21 @@ function Payment() {
   const [succeeded, setSucceeded] = useState(false);
   const [error, setError] = useState(null);
   const [disabled, setDisabled] = useState(true);
-  const [clientSecret, setClientSecret] = useState("");
+  const [clientSecret, setClientSecret] = useState(true);
 
   useEffect(() => {
     const getClientSecret = async () => {
       const res = await axios({
         method: "POST",
         //Strip expect the total in a currency subunits
-        url: `/payment/create?total=${getBasketTotal(basket) * 100}`,
+        url: `/payments/create?total=${getBasketTotal(basket) * 100}`,
       });
       setClientSecret(res.data.clientSecret);
     };
     getClientSecret();
   }, [basket]);
+
+  console.log(clientSecret);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -45,6 +47,9 @@ function Payment() {
         setSucceeded(true);
         setError(null);
         setProcessing(false);
+
+        dispatch({ type: "EMPTY_BASKET" });
+
         history.replace("/orders");
       });
   };
