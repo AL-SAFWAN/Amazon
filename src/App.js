@@ -9,6 +9,7 @@ import { auth } from "./firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useEffect } from "react";
 import { useStateValue } from "./Store/StateProvider";
+import Payment from "./Components/Payment";
 
 function App() {
   const [user] = useAuthState(auth);
@@ -39,6 +40,9 @@ function App() {
           </Route>
           <Route path="/checkout">
             <Checkout />
+          </Route>
+          <Route path="/payment">
+            <Payment />
           </Route>
           <Route path="/">
             <Home />
