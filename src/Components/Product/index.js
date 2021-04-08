@@ -1,6 +1,22 @@
 import React from "react";
 import "./Product.css";
-function index({ title, image, price, rating }) {
+import { useStateValue } from "../../Store/StateProvider";
+
+function Index({ id, title, image, price, rating }) {
+  const [{ basket }, dispatch] = useStateValue();
+  const addToBasket = () => {
+    //dispatch an action
+    dispatch({
+      type: "ADD_TO_BASKET",
+      payload: {
+        id: id,
+        title: title,
+        image: image,
+        price: price,
+        rating: rating,
+      },
+    });
+  };
   return (
     <div className="product">
       <div className="product__info">
@@ -18,9 +34,9 @@ function index({ title, image, price, rating }) {
         </div>
       </div>
       <img src={image} alt="" />
-      <button>Add to Cart</button>
+      <button onClick={addToBasket}>Add to Cart</button>
     </div>
   );
 }
 
-export default index;
+export default Index;
