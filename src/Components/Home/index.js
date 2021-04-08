@@ -64,7 +64,7 @@ function Home() {
           <Product
             id="6"
             title="Cadbury Dairy Milk Chocolate Gift Bar 850g"
-            price={1.99}
+            price={1000}
             image={
               "https://m.media-amazon.com/images/I/41s9m74y7fL._AC_SY200_.jpg"
             }

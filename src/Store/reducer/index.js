@@ -7,6 +7,8 @@ const reducer = (state, { type, payload }) => {
   switch (type) {
     case "ADD_TO_BASKET":
       return { ...state, basket: [...state.basket, payload] };
+    case "EMPTY_BASKET":
+      return { ...state, basket: [] };
     case "REMOVE_FROM_BASKET":
       const index = state.basket.findIndex((item) => item.id === payload);
       const newBasket = [...state.basket];
