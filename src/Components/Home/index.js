@@ -2,7 +2,7 @@ import React from "react";
 import Product from "../Product/index";
 import "./Home.css";
 
-function index() {
+function Home() {
   return (
     <div className="home">
       <div className="home__container">
@@ -76,4 +76,4 @@ function index() {
   );
 }
 
-export default index;
+export default Home;
