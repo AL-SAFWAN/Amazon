@@ -2,7 +2,7 @@ import React from "react";
 import "./Product.css";
 import { useStateValue } from "../../Store/StateProvider";
 
-function Index({ id, title, image, price, rating }) {
+function Product({ id, title, image, price, rating }) {
   const [{ basket }, dispatch] = useStateValue();
   const addToBasket = () => {
     //dispatch an action
@@ -39,4 +39,4 @@ function Index({ id, title, image, price, rating }) {
   );
 }
 
-export default Index;
+export default Product;
