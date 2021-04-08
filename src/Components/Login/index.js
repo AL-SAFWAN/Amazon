@@ -1,17 +1,39 @@
 import React, { useRef } from "react";
 import "./Login.css";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
+import { auth } from "../../firebase";
 
 function Login() {
+  const history = useHistory();
   const emailRef = useRef("");
   const passwordRef = useRef("");
   const signIn = (e) => {
     e.preventDefault();
-
-    console.log(emailRef.current.value, passwordRef.current.value);
+    auth
+      .signInWithEmailAndPassword(
+        emailRef.current.value,
+        passwordRef.current.value
+      )
+      .then((auth) => {
+        if (auth) {
+          history.push("/");
+        }
+      })
+      .catch((err) => alert(err.message));
   };
   const register = (e) => {
     e.preventDefault();
+    auth
+      .createUserWithEmailAndPassword(
+        emailRef.current.value,
+        passwordRef.current.value
+      )
+      .then((auth) => {
+        if (auth) {
+          history.push("/");
+        }
+      })
+      .catch((err) => alert(err));
   };
   return (
     <div className="login">
@@ -37,7 +59,7 @@ function Login() {
           Please see Our Privacy Notice, our Cookie Notice and our
           Interest-Based Ads Notice
         </p>
-        <button className="login__registerButton">
+        <button onClick={register} className="login__registerButton">
           Create Your Amazon Account
         </button>
       </div>
